@@ -69,6 +69,12 @@ public class KeyBasedEncryptionStrategy extends AbstractNamedEncryptionStrategy
             encryptionAlgorithm = EncryptionAlgorithm.AES_256.toString();
         }
 
+        /** Fix to assign the default PGPOutputMode **/
+        if (pgpOutputMode == null)
+        {
+        	pgpOutputMode = org.mule.module.pgp.config.PGPOutputMode.ARMOR;
+        }
+        
         try
         {
             encryptionAlgorithmId = EncryptionAlgorithm.valueOf(encryptionAlgorithm).getNumericId();
